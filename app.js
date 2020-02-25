@@ -14,11 +14,12 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
 
-var firstname = req.body.fname;
-var lastname = req.body.lname;
-var emailID = req.body.email;
+  var apiKey = "215692c5888592d4583b79a21de2714d-us4";
+  var firstname = req.body.fname;
+  var lastname = req.body.lname;
+  var emailID = req.body.email;
 
-console.log(firstname + " " + lastname + " " + emailID);
+  console.log(firstname + " " + lastname + " " + emailID);
 });
 
 
