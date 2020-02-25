@@ -12,8 +12,14 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
-// app.post("/", function(req, res) {
-// });
+app.post("/", function(req, res) {
+
+var firstname = req.body.fname;
+var lastname = req.body.lname;
+var emailID = req.body.email;
+
+console.log(firstname + " " + lastname + " " + emailID);
+});
 
 
 app.listen(3000, function() {
