@@ -1,9 +1,10 @@
+//jshint esversion: 6
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var request = require("request");
+const express = require("express");
+const bodyParser = require("body-parser");
+const request = require("request");
 
-var app = express();
+const app = express();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,15 +15,28 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
 
-  var apiKey = "215692c5888592d4583b79a21de2714d-us4";
-  var firstname = req.body.fname;
-  var lastname = req.body.lname;
-  var emailID = req.body.email;
+  const apiKey = "215692c5888592d4583b79a21de2714d-us4";
+  const firstname = req.body.fname;
+  const lastname = req.body.lname;
+  const emailID = req.body.email;
 
-  console.log(firstname + " " + lastname + " " + emailID);
+  const data = {
+    members: [
+      {
+        email_address: emailID,
+        status: "subscribed",
+        merge_fields: {
+          FNAME: firstname,
+          LNAME: lastname
+        }
+      }
+    ]
+  };
 });
 
 
 app.listen(3000, function() {
   console.log("server is running on port 3000");
 });
+
+//d0e7323970
