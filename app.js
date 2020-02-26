@@ -2,7 +2,8 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-// const request = require("request");
+const request = require("request");
+const https = require("https");
 
 const app = express();
 
@@ -31,20 +32,25 @@ app.post("/", function(req, res) {
       }
     ]
   };
-});
 
-const jsonData = JSON.stringify(data);
-const url = "https://us4.api.mailchimp.com/3.0/lists/d0e7323970";
-const option = {
-  method: "POST",
-  auth: "Nitin:215692c5888592d4583b79a21de2714d-us4"
-};
+  const jsonData = JSON.stringify(data);
+  const url = "https://us4.api.mailchimp.com/3.0/lists/d0e7323970";
+  const option = {
+    method: "POST",
+    auth: "Nitin:215692c5888592d4583b79a21de2714d-us4"
+  };
 
-const request = https.request(url, option, function(response) {
-  response.on("data", function(data) {
-    console.log(JSON.parse(data));
+  const request = https.request(url, option, function(response) {
+    response.on("data", function(data) {
+      console.log(JSON.parse(data));
+    });
   });
+
+  request.write(jsonData);
+  request.end();
+
 });
+
 
 
 
