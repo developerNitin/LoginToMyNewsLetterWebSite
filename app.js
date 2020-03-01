@@ -37,7 +37,7 @@ app.post("/", function(req, res) {
   const url = "https://us4.api.mailchimp.com/3.0/lists/d0e7323970";
   const option = {
     method: "POST",
-    auth: "Nitin:215692c5888592d4583b79a21de2714d-us4"
+    auth: "Nitin: /* apiKey */ "
   };
 
   const request = https.request(url, option, function(response) {
